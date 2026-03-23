@@ -1,9 +1,47 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, ReactNode } from 'react';
 import { 
   Shield, CheckCircle2, Cpu, ArrowRight
 } from 'lucide-react';
 import { ApplyButton } from './ApplyButton';
+
+interface RevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+const Reveal: React.FC<RevealProps> = ({ children, className = "", delay = 0 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`${className} transition-all duration-700 ease-out transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 // Curriculum Data Structure
 const CURRICULUM_DATA = [
@@ -37,40 +75,47 @@ export const CourseSection: React.FC = () => {
   return (
     <section id="courses" className="py-24 bg-[#1a0f0f] text-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-black mb-4">
-            단계별 학습 설계로<br />
-            <span className="text-red-500">탄탄하게 쌓는 커리큘럼</span>
-          </h2>
-        </div>
+        <Reveal>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-black mb-4">
+                단계별 학습 설계로<br />
+                <span className="text-red-500">탄탄하게 쌓는 커리큘럼</span>
+              </h2>
+            </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {CURRICULUM_DATA.map((item) => (
-            <div key={item.id} className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl hover:border-red-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] group">
-              <span className="text-red-500 font-black text-4xl mb-6 block group-hover:scale-110 transition-transform origin-left">{item.id}</span>
-              <h3 className="text-xl font-bold mb-3 text-white group-hover:text-red-400 transition-colors">{item.title}</h3>
-              <p className="text-zinc-400 text-sm mb-6 leading-relaxed">{item.desc}</p>
-              <ul className="space-y-3 text-zinc-300 text-sm border-t border-zinc-800 pt-6">
-                {item.subjects.map((sub, i) => <li key={i} className="flex items-start gap-2"><CheckCircle2 size={16} className="text-red-500 mt-0.5 flex-shrink-0" /> {sub}</li>)}
-              </ul>
-            </div>
+          {CURRICULUM_DATA.map((item, idx) => (
+            <Reveal key={item.id} delay={idx * 50}>
+                <div className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl hover:border-red-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] group h-full">
+                  <span className="text-red-500 font-black text-4xl mb-6 block group-hover:scale-110 transition-transform origin-left">{item.id}</span>
+                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-red-400 transition-colors">{item.title}</h3>
+                  <p className="text-zinc-400 text-sm mb-6 leading-relaxed">{item.desc}</p>
+                  <ul className="space-y-3 text-zinc-300 text-sm border-t border-zinc-800 pt-6">
+                    {item.subjects.map((sub, i) => <li key={i} className="flex items-start gap-2"><CheckCircle2 size={16} className="text-red-500 mt-0.5 flex-shrink-0" /> {sub}</li>)}
+                  </ul>
+                </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="bg-zinc-900/30 border border-zinc-800 p-10 rounded-3xl backdrop-blur-sm">
-            <h3 className="text-2xl font-bold mb-10 text-center text-white">프로젝트 과정</h3>
-            <div className="grid md:grid-cols-3 gap-8">
-                {PROJECTS_DATA.map((p, i) => (
-                    <div key={i} className="bg-zinc-950 p-8 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
-                        <h4 className="text-lg font-bold mb-6 text-red-500">{p.title}</h4>
-                        <ul className="space-y-3 text-zinc-300 text-sm">
-                            {p.subjects.map((sub, j) => <li key={j} className="flex items-start gap-2"><Cpu size={16} className="text-zinc-600 mt-0.5 flex-shrink-0" /> {sub}</li>)}
-                        </ul>
-                    </div>
-                ))}
+        <Reveal>
+            <div className="bg-zinc-900/30 border border-zinc-800 p-10 rounded-3xl backdrop-blur-sm">
+                <h3 className="text-2xl font-bold mb-10 text-center text-white">프로젝트 과정</h3>
+                <div className="grid md:grid-cols-3 gap-8">
+                    {PROJECTS_DATA.map((p, i) => (
+                        <div key={i} className="bg-zinc-950 p-8 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
+                            <h4 className="text-lg font-bold mb-6 text-red-500">{p.title}</h4>
+                            <ul className="space-y-3 text-zinc-300 text-sm">
+                                {p.subjects.map((sub, j) => <li key={j} className="flex items-start gap-2"><Cpu size={16} className="text-zinc-600 mt-0.5 flex-shrink-0" /> {sub}</li>)}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
+                <p className="text-zinc-500 text-xs mt-10 text-center">※ 토이프로젝트는 강의 시간중 오후 시간을 할애하여 2~3일 만에 완성함.</p>
             </div>
-            <p className="text-zinc-500 text-xs mt-10 text-center">※ 토이프로젝트는 강의 시간중 오후 시간을 할애하여 2~3일 만에 완성함.</p>
-        </div>
+        </Reveal>
+        
         <div className="flex justify-center pt-16">
             <ApplyButton />
         </div>

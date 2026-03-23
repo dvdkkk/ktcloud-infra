@@ -44,6 +44,15 @@ const Reveal: React.FC<RevealProps> = ({ children, className = "", delay = 0 }) 
 export const EmploymentSupport: React.FC = () => {
   const programs = [
     {
+      id: 5,
+      title: "우수 수료생 채용 지원 시 우대",
+      desc: "탁월한 성과를 인정받은 우수 수료생은 kt cloud 채용 과정에서 우대 혜택을 받아 취업 경쟁력을 높일 수 있습니다.",
+      icon: Award,
+      color: "text-yellow-400",
+      bgHover: "group-hover:bg-yellow-500/10",
+      borderHover: "group-hover:border-yellow-500/50"
+    },
+    {
       id: 1,
       title: "kt cloud 현직자 멘토링",
       desc: "현직 전문가와의 1:1 혹은 그룹 멘토링을 통해 실무 경험과 진로 방향에 대한 깊이 있는 인사이트를 얻습니다.",
@@ -78,15 +87,6 @@ export const EmploymentSupport: React.FC = () => {
       color: "text-emerald-500",
       bgHover: "group-hover:bg-emerald-500/10",
       borderHover: "group-hover:border-emerald-500/50"
-    },
-    {
-      id: 5,
-      title: "우수 수료생 채용 지원 시 우대",
-      desc: "탁월한 성과를 인정받은 우수 수료생은 kt cloud 채용 과정에서 우대 혜택을 받아 취업 경쟁력을 높일 수 있습니다.",
-      icon: Award,
-      color: "text-red-500",
-      bgHover: "group-hover:bg-red-500/10",
-      borderHover: "group-hover:border-red-500/50"
     },
     {
       id: 6,
@@ -146,7 +146,7 @@ export const EmploymentSupport: React.FC = () => {
                         </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-white transition-colors relative z-10 break-keep pr-4">
+                    <h3 className={`text-xl font-bold mb-4 group-hover:text-white transition-colors relative z-10 break-keep pr-4 ${item.id === 5 ? 'text-yellow-400' : 'text-white'}`}>
                         {item.title}
                     </h3>
                     
