@@ -57,9 +57,11 @@ export const IntroSection: React.FC = () => {
           </h2>
 
           {/* Description */}
-          <p className={`text-base md:text-xl text-zinc-400 font-light leading-relaxed mb-16 break-keep animate-blink ${getStyle("delay-200").className}`}>
-            {intro.description}
-          </p>
+          <div className={`inline-block animate-pulse mb-16 ${getStyle("delay-200").className}`}>
+            <p className="text-base md:text-xl text-white font-bold leading-relaxed bg-red-700/80 px-6 py-3 rounded-full break-keep">
+              {intro.description}
+            </p>
+          </div>
 
           {/* Image Carousel */}
           <div className={`mb-16 ${getStyle("delay-300").className}`}>
