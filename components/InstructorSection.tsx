@@ -80,8 +80,9 @@ export const InstructorSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="overflow-x-auto mb-12">
-            <table className="w-full text-center text-zinc-300 text-sm border-collapse">
+          <div className="overflow-x-auto mb-12 relative">
+            <div className="md:hidden text-center text-zinc-500 text-xs mb-2 animate-pulse">← 좌우로 스크롤하여 확인하세요 →</div>
+            <table className="w-full text-center text-zinc-300 text-sm border-collapse min-w-[600px]">
               <thead>
                 <tr className="border-b border-zinc-800">
                   <th className="p-2">전반적 만족도</th><th className="p-2">훈련내용</th><th className="p-2">훈련교사</th><th className="p-2">훈련방법</th><th className="p-2">시설장비</th><th className="p-2">행정서비스</th><th className="p-2">취업지원</th>

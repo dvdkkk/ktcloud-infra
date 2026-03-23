@@ -34,23 +34,23 @@ const PROJECTS_DATA = [
 
 export const CourseSection: React.FC = () => {
   return (
-    <section id="courses" className="py-24 bg-black text-white">
+    <section id="courses" className="py-24 bg-zinc-950 text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black mb-4">
             단계별 학습 설계로<br />
-            <span className="text-red-600">탄탄하게 쌓는 커리큘럼</span>
+            <span className="text-red-500">탄탄하게 쌓는 커리큘럼</span>
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {CURRICULUM_DATA.map((item) => (
-            <div key={item.id} className="bg-zinc-900 border border-zinc-800 p-8 rounded-3xl hover:border-red-600/50 transition-all duration-300 hover:shadow-[0_0_20px_rgba(220,38,38,0.1)] group">
+            <div key={item.id} className="bg-zinc-900/80 border border-zinc-700 p-8 rounded-3xl hover:border-red-500 transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] group">
               <span className="text-red-500 font-black text-3xl mb-4 block group-hover:scale-110 transition-transform origin-left">{item.id}.</span>
               <h3 className="text-xl font-bold mb-3 text-white group-hover:text-red-400 transition-colors">{item.title}</h3>
               <p className="text-zinc-400 text-sm mb-6 leading-relaxed">{item.desc}</p>
               <ul className="space-y-3 text-zinc-300 text-sm border-t border-zinc-800 pt-6">
-                {item.subjects.map((sub, i) => <li key={i} className="flex items-start gap-2"><CheckCircle2 size={16} className="text-red-600 mt-0.5 flex-shrink-0" /> {sub}</li>)}
+                {item.subjects.map((sub, i) => <li key={i} className="flex items-start gap-2"><CheckCircle2 size={16} className="text-red-500 mt-0.5 flex-shrink-0" /> {sub}</li>)}
               </ul>
             </div>
           ))}

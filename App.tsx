@@ -15,7 +15,6 @@ import { ContentProvider, useContent } from './contexts/ContentContext';
 import { AdminDashboard } from './components/AdminDashboard';
 import { AdminLogin } from './components/AdminLogin';
 import { InstructorSection } from './components/InstructorSection';
-import { LearningSpaceSection } from './components/LearningSpaceSection';
 
 function VisitorTracker() {
   const { addVisitorLog } = useContent();
@@ -127,7 +126,6 @@ function AppContent() {
         <InstructorSection />
         <EmploymentSupport />
         <ReviewSection />
-        <LearningSpaceSection />
         <ConsultationForm />
       </main>
       <FloatingCTA />

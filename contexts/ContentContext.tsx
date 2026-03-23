@@ -28,7 +28,8 @@ const defaultContent: SiteContent = {
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1558494949-ef010bbbb315?q=80&w=2070&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1518432031352-d6fc5c10da6a?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop"
     ]
   },
   vision: {
