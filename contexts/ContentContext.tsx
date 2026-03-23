@@ -25,11 +25,12 @@ const defaultContent: SiteContent = {
     title2: "",
     description: "100% 온라인 실시간 강의!",
     images: [
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1558494949-ef010bbbb315?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518432031352-d6fc5c10da6a?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop"
+      "https://postfiles.pstatic.net/MjAyNjAzMjNfMTUg/MDAxNzc0MjQ3ODgxNzA0.9nl7OFQdRRxgs1OFBkfZmK3Te8TBQvi6WULjx2MiDlsg.T-Cg2WURkmLN-psRRwx_JtJew78PuN8yS1wz2Wf8Ts0g.JPEG/news_img01.jpg?type=w966",
+      "https://postfiles.pstatic.net/MjAyNjAzMjNfNzgg/MDAxNzc0MjQ3ODgxNzA1.JiEDLMXLDuia3fcKubvQX1OotJWNdm-iBc5PME1Ano4g.xAQ_xonDKqlqUNQUP_oSesvT4hqKLuEYaQfbH6e-NgIg.JPEG/news_img06.jpg?type=w966",
+      "https://postfiles.pstatic.net/MjAyNjAzMjNfMTE5/MDAxNzc0MjQ3ODgxNzAy.ZYo4qPxkwDOLd9KcgfXRKJvUJ5imOLXkhgn7JjsB86kg.lxnLZTyeMI4NzVg38yPAzuNr0IvGO9-UovWefZgeXM4g.JPEG/news_img05.jpg?type=w966",
+      "https://postfiles.pstatic.net/MjAyNjAzMjNfNzAg/MDAxNzc0MjQ3ODgxNzA3.ed_OOPYSoEj57TaKeJpbMW671WRog2Cz8KNHdMpDMikg.M8dG1W-w_mFGuMWBbyFs9tKM54G2OWvYwgzhG0a7H_Yg.JPEG/news_img04.jpg?type=w966",
+      "https://postfiles.pstatic.net/MjAyNjAzMjNfMjcw/MDAxNzc0MjQ3ODgxNjY1.vGk5R1fZLsrt5MSuP5FpiM7LFZp-mYMrq_Q9QNB6EkYg.2_Lj_XahAOAcRTgoy6KifjgRHfoAMx1MU4sCxQbHadcg.JPEG/news_img03.jpg?type=w966",
+      "https://postfiles.pstatic.net/MjAyNjAzMjNfMjg1/MDAxNzc0MjQ3ODgxNzA2.WinKM72O8F4mhp2CrbuzNsgnZ-NPIMhvyLfcpSsim1wg.WbEv8sVIpaSEfYXFtAfakGHY945nDhHVGMWOqv1Wxosg.JPEG/news_img02.jpg?type=w966"
     ]
   },
   vision: {
