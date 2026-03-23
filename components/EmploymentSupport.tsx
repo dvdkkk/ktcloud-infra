@@ -1,6 +1,7 @@
 
 import React, { useRef, useState, useEffect, ReactNode } from 'react';
 import { Users, Trophy, Mic2, FileCode, Award, FileText, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { ApplyButton } from './ApplyButton';
 
 interface RevealProps {
   children: ReactNode;
@@ -163,12 +164,15 @@ export const EmploymentSupport: React.FC = () => {
 
         {/* Bottom CTA */}
         <Reveal delay={600} className="mt-16 text-center">
-            <div className="inline-block p-[1px] rounded-full bg-gradient-to-r from-zinc-800 via-red-900 to-zinc-800">
+            <div className="inline-block p-[1px] rounded-full bg-gradient-to-r from-zinc-800 via-red-900 to-zinc-800 mb-12">
                 <div className="bg-black rounded-full px-6 py-3 flex items-center gap-3">
                     <span className="text-zinc-400 text-xs md:text-sm font-medium">이 모든 혜택을 국비지원을 통해 누리세요</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-600"></span>
                     <span className="text-white text-xs md:text-sm font-bold">자비부담금 0 ~ 60만원</span>
                 </div>
+            </div>
+            <div className="flex justify-center">
+                <ApplyButton />
             </div>
         </Reveal>
 

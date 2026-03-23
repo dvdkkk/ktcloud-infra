@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect, ReactNode } from 'react';
 import { 
   Gift, Monitor, Cloud, Cpu, BookOpen, Book, Code2, Trophy, Wallet
 } from 'lucide-react';
+import { ApplyButton } from './ApplyButton';
 
 interface RevealProps {
   children: ReactNode;
@@ -148,6 +149,9 @@ export const HanjikgyoBenefits: React.FC = () => {
               </Reveal>
             );
           })}
+        </div>
+        <div className="flex justify-center pt-20">
+            <ApplyButton />
         </div>
       </div>
     </section>

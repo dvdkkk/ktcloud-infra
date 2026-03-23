@@ -1,6 +1,7 @@
 
 import React, { useRef, useState, useEffect, ReactNode } from 'react';
 import { Eye, Banknote, ArrowUpRight, User, Zap, Trophy, Check, BarChart2 } from 'lucide-react';
+import { ApplyButton } from './ApplyButton';
 
 interface RevealProps {
   children: ReactNode;
@@ -223,6 +224,9 @@ export const VisionSection: React.FC = () => {
               비전공자도 경력자로!<br />
               <span className="text-white">kt</span> <span className="text-red-600">cloud</span> <span className="text-white">TECH UP</span>
             </h4>
+          </div>
+          <div className="flex justify-center pt-8">
+            <ApplyButton />
           </div>
         </Reveal>
 

@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { 
   Shield, CheckCircle2, Cpu, ArrowRight
 } from 'lucide-react';
+import { ApplyButton } from './ApplyButton';
 
 // Curriculum Data Structure
 const CURRICULUM_DATA = [
@@ -34,7 +35,7 @@ const PROJECTS_DATA = [
 
 export const CourseSection: React.FC = () => {
   return (
-    <section id="courses" className="py-24 bg-gradient-to-b from-zinc-900 to-zinc-950 text-white border-y border-zinc-800">
+    <section id="courses" className="py-24 bg-[#1a0f0f] text-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black mb-4">
@@ -69,6 +70,9 @@ export const CourseSection: React.FC = () => {
                 ))}
             </div>
             <p className="text-zinc-500 text-xs mt-10 text-center">※ 토이프로젝트는 강의 시간중 오후 시간을 할애하여 2~3일 만에 완성함.</p>
+        </div>
+        <div className="flex justify-center pt-16">
+            <ApplyButton />
         </div>
       </div>
     </section>
