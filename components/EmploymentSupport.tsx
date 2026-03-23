@@ -119,7 +119,8 @@ export const EmploymentSupport: React.FC = () => {
               <span className="text-red-600">맞춤형 커리어 지원</span>
             </h2>
             <p className="text-zinc-500 mt-4 text-sm">
-                kt cloud TECH UP만의 차별화된 프로그램으로 취업 경쟁력을 완성하세요.
+                kt cloud TECH UP만의 차별화된 프로그램으로<br />
+                취업 경쟁력을 완성하세요.
             </p>
           </Reveal>
         </div>
@@ -166,7 +167,7 @@ export const EmploymentSupport: React.FC = () => {
                 <div className="bg-black rounded-full px-6 py-3 flex items-center gap-3">
                     <span className="text-zinc-400 text-xs md:text-sm font-medium">이 모든 혜택을 국비지원을 통해 누리세요</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-600"></span>
-                    <span className="text-white text-xs md:text-sm font-bold">95~100% 국비지원 교육</span>
+                    <span className="text-white text-xs md:text-sm font-bold">자비부담금 0 ~ 60만원</span>
                 </div>
             </div>
         </Reveal>

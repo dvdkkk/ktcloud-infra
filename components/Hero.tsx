@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
 
       {/* Content (z-10) */}
       <div className="container mx-auto px-4 z-10 relative text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-700/10 border border-red-700/30 text-red-600 mb-6 animate-fade-in-up shadow-[0_0_20px_rgba(185,28,28,0.3)]">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-700/10 border border-red-700/30 text-red-600 mb-6 animate-bounce shadow-[0_0_20px_rgba(185,28,28,0.3)]">
           <Star size={14} fill="currentColor" />
           <span className="text-xs font-bold tracking-wide">{hero.badge}</span>
         </div>
