@@ -6,12 +6,12 @@ import { COURSES, EMPLOYMENT_STATUS, PROCESS_STEPS } from '../constants';
 const defaultContent: SiteContent = {
   hero: {
     badge: "확장성과 안정성을 구축하는 인프라 전문가 과정",
-    title: "KT Cloud 클라우드 엔지니어링",
+    title: "KT Cloud \n클라우드 엔지니어링",
     highlight: "(인프라) 전문가과정",
-    description: "100% 온라인 실시간 강의로 진행되는 KT Cloud 클라우드 엔지니어링 전문가 과정입니다. 리눅스, 네트워크, 데이터베이스, 쿠버네티스, AWS, 오픈스택 등 클라우드 인프라의 핵심 기술을 마스터합니다.",
+    description: "으로 거듭나세요",
     stats: [
       { label: '교육기간', value: '26년 05월 12일 ~ 12월 08일' },
-      { label: '교육시간', value: '평일 09:00~18:00' },
+      { label: '교육시간', value: '평일 09:00~18:00 (1일 8시간)' },
       { label: '교육방법', value: '100% 온라인 실시간' },
       { label: '자비부담금', value: '0 ~ 60만원' },
       { label: '훈련장려금', value: '매월 30만원 + α' },
@@ -23,7 +23,7 @@ const defaultContent: SiteContent = {
     title1: "왜? KT클라우드 인프라 기술을",
     highlight: "배워야 할까?",
     title2: "",
-    description: "클라우드·AI 융합은 지금 배워야 할 핵심 기술입니다.",
+    description: "100% 온라인 실시간 강의!",
     images: [
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1558494949-ef010bbbb315?q=80&w=2070&auto=format&fit=crop",

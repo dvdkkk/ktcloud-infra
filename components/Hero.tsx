@@ -39,17 +39,13 @@ export const Hero: React.FC = () => {
           <span className="text-xs font-bold tracking-wide">{hero.badge}</span>
         </div>
         
-        <h1 className="text-3xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)]">
+        <h1 className="text-3xl md:text-6xl font-black text-white mb-6 leading-tight tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] whitespace-pre-line">
           {hero.title} <br />
           <span className="text-red-600">
             {hero.highlight}
-          </span>로 거듭나세요
+          </span>{hero.description}
         </h1>
         
-        <p className="text-base md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-medium leading-relaxed whitespace-pre-line drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
-          {hero.description}
-        </p>
-
         {/* Course Title Plate */}
         <div className="max-w-4xl mx-auto mb-12 animate-fade-in-up delay-300">
           <div className="relative p-6 md:p-8 rounded-2xl bg-zinc-900/60 backdrop-blur-xl border border-white/10 overflow-hidden group">
@@ -68,7 +64,7 @@ export const Hero: React.FC = () => {
               <div className="flex items-center gap-3">
                 <Cpu className="text-red-600 hidden md:block" size={32} />
                 <h2 className="text-2xl md:text-4xl font-black text-white tracking-tighter">
-                  kt cloud 사이버 보안
+                  KT Cloud 클라우드 엔지니어링 (인프라) 전문가과정
                 </h2>
               </div>
             </div>
@@ -83,7 +79,7 @@ export const Hero: React.FC = () => {
                 {statIcons[idx]}
                 <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">{stat.label}</p>
               </div>
-              <p className={`text-sm md:text-lg font-black break-keep ${stat.value.includes('모집 중') ? 'text-red-600' : 'text-white'}`}>
+              <p className={`text-sm md:text-lg font-black break-keep ${stat.value.includes('모집 중') ? 'text-red-600' : stat.label === '교육기간' ? 'text-yellow-400' : 'text-white'}`}>
                 {stat.value}
               </p>
             </div>

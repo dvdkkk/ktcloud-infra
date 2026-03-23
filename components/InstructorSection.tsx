@@ -43,9 +43,6 @@ const Reveal: React.FC<RevealProps> = ({ children, className = "", delay = 0 }) 
 export const InstructorSection: React.FC = () => {
   return (
     <section className="py-24 bg-zinc-950 relative overflow-hidden border-t border-zinc-900">
-      {/* Background Element */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-red-900/5 rounded-full blur-[100px] pointer-events-none"></div>
-
       <div className="container mx-auto px-4 relative z-10">
         <Reveal>
           <div className="text-center mb-16">
@@ -60,78 +57,84 @@ export const InstructorSection: React.FC = () => {
           </div>
         </Reveal>
 
-        <div className="max-w-5xl mx-auto">
-          <Reveal delay={200}>
-            <div className="flex flex-col md:flex-row bg-zinc-900/50 border border-zinc-800 rounded-3xl overflow-hidden hover:border-red-900/30 transition-colors shadow-2xl">
-              
-              {/* Profile Image Area */}
-              <div className="md:w-2/5 relative min-h-[400px] md:min-h-full bg-zinc-800">
-                <img 
-                  src="https://postfiles.pstatic.net/MjAyNjAyMTNfMjYg/MDAxNzcwOTcwMDg4ODQw.KZ1Vlz6i1wBPZwH1AVCfuCvoN6VpbyEehyb03M73bpcg.JhENNjkiZbbk0hEMa9reVdKH_9X3STtNKiYqLJwMeMUg.PNG/techup_lecturer_security_taewoon.png?type=w966" 
-                  alt="강태운 강사" 
-                  referrerPolicy="no-referrer"
-                  className="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay grayscale hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent md:bg-gradient-to-r"></div>
-                
-                <div className="absolute bottom-8 left-8 right-8">
-                  <h3 className="text-3xl font-black text-white mb-1">강태운</h3>
-                  <p className="text-red-500 font-bold text-sm uppercase tracking-wider">Expert Instructor</p>
-                  <p className="text-zinc-400 text-sm mt-2 font-medium">정보보안 및 데이터 분석 전문가</p>
-                </div>
+        <div className="max-w-5xl mx-auto bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div className="flex flex-col md:flex-row gap-8 mb-12">
+            <div className="md:w-1/3 text-center">
+              <div className="w-32 h-32 bg-zinc-800 rounded-full mx-auto mb-4 flex items-center justify-center text-zinc-500">
+                <UserCheck size={48} />
               </div>
+              <h3 className="text-2xl font-black text-white">김범택</h3>
+              <p className="text-red-500 font-bold">강사</p>
+              <p className="text-zinc-400 text-sm mt-2">클라우드 구축 및 컨설팅 전문가</p>
+            </div>
+            <div className="md:w-2/3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                {['클라우드 엔지니어링', '보안', '가상화', '인공지능'].map(skill => (
+                  <span key={skill} className="bg-zinc-800 text-zinc-300 px-3 py-1 rounded-full text-xs text-center">{skill}</span>
+                ))}
+              </div>
+              <div className="bg-zinc-950 p-6 rounded-2xl border border-zinc-800">
+                <p className="text-zinc-300 text-sm mb-2">총 수강 인원: 26명 | 평균만족도: 4.9점</p>
+                <p className="text-zinc-300 text-sm">총 평가인원: 23명 | 평가참여율: 88.5%</p>
+              </div>
+            </div>
+          </div>
 
-              {/* Content Area */}
-              <div className="md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
-                <div className="mb-8">
-                  <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-zinc-800 pb-4">
-                    <UserCheck className="text-red-600" size={24} />
-                    이력 소개
-                  </h4>
-                  
-                  <ul className="space-y-6">
-                    <li className="flex gap-4 items-start group">
-                      <div className="mt-1 w-2 h-2 rounded-full bg-red-600 shadow-[0_0_8px_rgba(220,38,38,0.8)] group-hover:scale-150 transition-transform"></div>
-                      <div>
-                        <span className="text-xs font-bold text-red-500 bg-red-950/30 px-2 py-0.5 rounded border border-red-900/30 mb-1 inline-block">Current</span>
-                        <p className="text-zinc-200 font-bold text-lg">kt cloud TECH UP 사이버 보안 강사</p>
-                      </div>
-                    </li>
-                    
-                    <li className="flex gap-4 items-start group">
-                      <div className="mt-1 w-2 h-2 rounded-full bg-red-600 shadow-[0_0_8px_rgba(220,38,38,0.8)] group-hover:scale-150 transition-transform"></div>
-                      <div>
-                        <span className="text-xs font-bold text-red-500 bg-red-950/30 px-2 py-0.5 rounded border border-red-900/30 mb-1 inline-block">Current</span>
-                        <p className="text-zinc-200 font-bold text-lg">마켓인사이트 대표</p>
-                      </div>
-                    </li>
+          <div className="overflow-x-auto mb-12">
+            <table className="w-full text-center text-zinc-300 text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-zinc-800">
+                  <th className="p-2">전반적 만족도</th><th className="p-2">훈련내용</th><th className="p-2">훈련교사</th><th className="p-2">훈련방법</th><th className="p-2">시설장비</th><th className="p-2">행정서비스</th><th className="p-2">취업지원</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="p-2">4.9</td><td className="p-2">4.9</td><td className="p-2">5</td><td className="p-2">4.8</td><td className="p-2">4.6</td><td className="p-2">4.9</td><td className="p-2">4.7</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                    <li className="flex gap-4 items-start group">
-                      <div className="mt-1 w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-zinc-400 transition-colors"></div>
-                      <div>
-                        <p className="text-zinc-400 font-medium">제이앤에이치프랜즈 정보보안 담당</p>
-                      </div>
-                    </li>
-
-                    <li className="flex gap-4 items-start group">
-                      <div className="mt-1 w-2 h-2 rounded-full bg-zinc-600 group-hover:bg-zinc-400 transition-colors"></div>
-                      <div>
-                        <p className="text-zinc-400 font-medium">정보보호 취약점 제보 및 대회 출제 다수</p>
-                      </div>
-                    </li>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <h4 className="text-lg font-bold text-white mb-4">주요경력</h4>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-red-500 font-bold text-sm">현재</p>
+                  <ul className="text-zinc-400 text-sm space-y-1">
+                    <li>(現) kt Cloud 클라우드 인프라 전임강의</li>
+                    <li>(現) 클라우드분야 컨설팅 및 구축강의 프리랜서</li>
                   </ul>
                 </div>
-
-                <div className="bg-zinc-950/50 p-4 rounded-xl border border-zinc-800 flex items-start gap-3">
-                  <Award className="text-zinc-500 flex-shrink-0 mt-0.5" size={16} />
-                  <p className="text-zinc-500 text-xs leading-relaxed">
-                    ※ 운영상의 이유로 강사가 변경될 수 있습니다.
-                  </p>
+                <div>
+                  <p className="text-zinc-500 font-bold text-sm">이전</p>
+                  <ul className="text-zinc-400 text-sm space-y-1">
+                    <li>(前) 하니웰 코리아 네트워크 보안 구축 및 운영</li>
+                    <li>(前) 시스코코리아 무선라우터 개발 및 최적화</li>
+                    <li>(前) 글로벌널리지 네트워크㈜ 네트워크, 서버, 가상화</li>
+                  </ul>
                 </div>
               </div>
-
             </div>
-          </Reveal>
+            <div>
+              <h4 className="text-lg font-bold text-white mb-4">강의 경력</h4>
+              <div className="space-y-4 text-zinc-400 text-sm">
+                <div>
+                  <p className="font-bold text-zinc-300">기업 강의</p>
+                  <p>[KaKao] Kakao 클라우드 엔지니어링 과정, [신세계아이엔씨] 클라우드 강의, [CJ올리브네트웍스] 클라우드 강의, aws, 컨테이너, 쿠버네티스 강의</p>
+                </div>
+                <div>
+                  <p className="font-bold text-zinc-300">대학 강의</p>
+                  <p>강원대, 계명대, 전남대, 경기대, 아주대, 성균관대 등 클라우드 강의</p>
+                </div>
+                <div>
+                  <p className="font-bold text-zinc-300">강의 경력</p>
+                  <p>[IITP 혁신성장 인재 양성사업] 클라우드 강의, [한국폴리텍대학] 하이테크 프로젝트 진행, K-Software Empowerment BootCamp(KSEB), AWS 클라우드엔지니어링, SK텔레콤, 신한 등 기업 재직자 강의 이외 다수 클라우드, 보안 관련 강의</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p className="text-zinc-600 text-xs mt-8 text-center">※ 운영상의 이유로 강사가 변경될 수 있습니다.</p>
         </div>
       </div>
     </section>

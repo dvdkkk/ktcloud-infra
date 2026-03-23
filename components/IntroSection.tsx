@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Users, Zap, Target } from 'lucide-react';
 import { useContent } from '../contexts/ContentContext';
+import { ImageCarousel } from './ImageCarousel';
 
 export const IntroSection: React.FC = () => {
   const { content } = useContent();
@@ -67,49 +68,13 @@ export const IntroSection: React.FC = () => {
           </h2>
 
           {/* Description */}
-          <p className={`text-base md:text-xl text-zinc-400 font-light leading-relaxed mb-16 break-keep ${getStyle("delay-200").className}`}>
+          <p className={`text-base md:text-xl text-zinc-400 font-light leading-relaxed mb-16 break-keep animate-blink ${getStyle("delay-200").className}`}>
             {intro.description}
           </p>
 
-          {/* Field Photos Grid */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 px-2 md:px-0 ${getStyle("delay-300").className}`}>
-            {intro.images.map((src, index) => (
-              <div key={index} className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-xl">
-                <img 
-                  src={src} 
-                  alt={`교육 현장 사진 ${index + 1}`} 
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-red-700/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-50"></div>
-              </div>
-            ))}
-          </div>
-
-          {/* Stats / Icons Grid */}
-          <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 text-left ${getStyle("delay-400").className}`}>
-            <div className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl hover:border-red-600/30 transition-colors group backdrop-blur-sm">
-              <div className="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:bg-red-700 group-hover:text-white transition-colors shadow-lg">
-                <Users size={24} />
-              </div>
-              <h3 className="text-white font-bold text-lg mb-2">경력 무관</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">경력상관없이 기술을 배워서 AI개발 직무로 진출이 가능합니다.</p>
-            </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl hover:border-red-600/30 transition-colors group backdrop-blur-sm">
-              <div className="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:bg-red-700 group-hover:text-white transition-colors shadow-lg">
-                <Target size={24} />
-              </div>
-              <h3 className="text-white font-bold text-lg mb-2">전공 무관</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed">인문계, 비전공자도 기초부터 확실하게 실력을 쌓아드립니다.</p>
-            </div>
-            <div className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl hover:border-red-600/30 transition-colors group backdrop-blur-sm">
-              <div className="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center text-white mb-4 group-hover:bg-red-700 group-hover:text-white transition-colors shadow-lg">
-                <Zap size={24} />
-              </div>
-              <h3 className="text-white font-bold text-lg mb-2">실무중심</h3>
-              <p className="text-zinc-500 text-sm leading-relaxed"> 실무 중심 교육으로 즉시 현장 투입이 가능합니다.</p>
-            </div>
+          {/* Image Carousel */}
+          <div className={getStyle("delay-300").className}>
+            <ImageCarousel images={intro.images} />
           </div>
 
         </div>

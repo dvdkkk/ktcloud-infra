@@ -1,8 +1,7 @@
 
 import React, { useRef, useState, useEffect, ReactNode } from 'react';
 import { 
-  Gift, Coins, Laptop, Building2, Gamepad2, Users, 
-  Cloud, Bot, BookOpen, Code2 
+  Gift, Monitor, Cloud, Cpu, BookOpen, Book, Code2, Trophy, Wallet
 } from 'lucide-react';
 
 interface RevealProps {
@@ -47,67 +46,59 @@ export const HanjikgyoBenefits: React.FC = () => {
   const benefits = [
     {
       id: 1,
-      title: "훈련 장려금 제공",
-      desc: "성장의 밑거름으로 월 최대 300,000원의 훈련장려금이 지급됩니다.",
-      icon: Coins,
-      highlight: "text-yellow-500"
-    },
-    {
-      id: 2,
-      title: "고성능 실무용 노트북 대여",
-      desc: "기기 성능 걱정 없이 교육에만 몰입할 수 있도록, 프로젝트 수행에 최적화된 고사양 노트북 대여 서비스를 제공합니다.",
-      icon: Laptop,
+      title: "실시간 온라인 교육",
+      desc: "다양한 온라인 협업 툴을 통한 최적의 교육환경 제공",
+      icon: Monitor,
       highlight: "text-blue-500"
     },
     {
-      id: 3,
-      title: "오프라인 교육장",
-      desc: "오프라인 협업으로 몰입도 200% 실전 같은 팀 프로젝트가 펼쳐집니다.",
-      icon: Building2,
-      highlight: "text-green-500"
-    },
-    {
-      id: 4,
-      title: "메타버스 교육장",
-      desc: "현실을 뛰어넘는 메타버스 기반 몰입형 학습 경험을 제공합니다.",
-      icon: Gamepad2,
-      highlight: "text-purple-500"
-    },
-    {
-      id: 5,
-      title: "네트워킹 파티",
-      desc: "혼자가 아닌 연결의 힘으로 성장의 속도를 높이세요.",
-      icon: Users,
-      highlight: "text-pink-500"
-    },
-    {
-      id: 6,
-      title: "프로젝트 맞춤형 실습 인프라 지원",
-      desc: "클라우드 실습 및 과제 수행에 필요한 최적의 구동 환경과 리소스를 제공합니다.",
+      id: 2,
+      title: "프로젝트 클라우드 지원",
+      desc: "팀 프로젝트의 성장을 위해 클라우드 비용을 지원합니다.",
       icon: Cloud,
       highlight: "text-cyan-500"
     },
     {
-      id: 7,
+      id: 3,
       title: "생성형 AI 도구 지원",
       desc: "AI와 함께라면 학습이 더 빠르고 똑똑해집니다.",
-      icon: Bot,
+      icon: Cpu,
       highlight: "text-indigo-500"
     },
     {
-      id: 8,
-      title: "인프런 강의 및 전문 도서 지원",
-      desc: "1개월 간 인프런 강의를 무제한으로 수강하실 수 있으며, 성장을 위한 전문 서적을 지원합니다.",
+      id: 4,
+      title: "인프런 콘텐츠 제공",
+      desc: "합격 시점부터 한 달 간 인프런 강의를 무제한으로 수강하실 수 있습니다.",
       icon: BookOpen,
       highlight: "text-orange-500"
     },
     {
-      id: 9,
-      title: "직군별 실전 역량 테스트 지원",
-      desc: "각 직군별 맞춤형 모의 테스트(코딩 테스트, 실무 과제 등)를 통해 실력을 검증하고 한 단계 도약하세요.",
-      note: "※ 개발 직군은 모의 코딩 테스트 지원",
+      id: 5,
+      title: "훈련 교재 제공",
+      desc: "학습 및 지식 성장을 위해 선정된 전문 서적을 제공합니다.",
+      icon: Book,
+      highlight: "text-green-500"
+    },
+    {
+      id: 6,
+      title: "모의 코딩 테스트 지원",
+      desc: "실전 같은 모의 테스트로 실력을 검증하고 한 단계 도약하세요.",
       icon: Code2,
       highlight: "text-red-500"
+    },
+    {
+      id: 7,
+      title: "성장 격려금 제공",
+      desc: "대회 수상 시 성장 격려금으로 최대 50만원 제공됩니다.",
+      icon: Trophy,
+      highlight: "text-yellow-500"
+    },
+    {
+      id: 8,
+      title: "훈련 장려금 제공",
+      desc: "성장과 연계된 장려금으로 월 최대 300,000원의 훈련장려금이 지급됩니다.",
+      icon: Wallet,
+      highlight: "text-emerald-500"
     },
   ];
 
@@ -135,8 +126,8 @@ export const HanjikgyoBenefits: React.FC = () => {
           </Reveal>
         </div>
 
-        {/* Benefit Items Grid - 3x3 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Benefit Items Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((benefit, idx) => {
             const Icon = benefit.icon;
             return (
@@ -150,15 +141,9 @@ export const HanjikgyoBenefits: React.FC = () => {
                           {benefit.title}
                       </h3>
                       
-                      <p className="text-zinc-400 text-sm leading-relaxed break-keep font-medium mb-2">
+                      <p className="text-zinc-400 text-sm leading-relaxed break-keep font-medium">
                           {benefit.desc}
                       </p>
-                      
-                      {benefit.note && (
-                        <p className="text-zinc-600 text-xs mt-auto pt-2 font-bold">
-                          {benefit.note}
-                        </p>
-                      )}
                   </div>
               </Reveal>
             );
