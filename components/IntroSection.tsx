@@ -47,6 +47,11 @@ export const IntroSection: React.FC = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           
+          {/* Image Carousel */}
+          <div className={`mb-16 ${getStyle("delay-300").className}`}>
+            <ImageCarousel images={intro.images} />
+          </div>
+
           {/* Top Badge */}
           <div className={getStyle("delay-0").className}>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-red-600 mb-8 shadow-[0_0_15px_rgba(185,28,28,0.3)]">
@@ -71,11 +76,6 @@ export const IntroSection: React.FC = () => {
           <p className={`text-base md:text-xl text-zinc-400 font-light leading-relaxed mb-16 break-keep animate-blink ${getStyle("delay-200").className}`}>
             {intro.description}
           </p>
-
-          {/* Image Carousel */}
-          <div className={getStyle("delay-300").className}>
-            <ImageCarousel images={intro.images} />
-          </div>
 
         </div>
       </div>

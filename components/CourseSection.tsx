@@ -34,7 +34,7 @@ const PROJECTS_DATA = [
 
 export const CourseSection: React.FC = () => {
   return (
-    <section id="courses" className="py-24 bg-zinc-950 text-white">
+    <section id="courses" className="py-24 bg-gradient-to-b from-zinc-900 to-zinc-950 text-white border-y border-zinc-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black mb-4">
@@ -45,8 +45,8 @@ export const CourseSection: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {CURRICULUM_DATA.map((item) => (
-            <div key={item.id} className="bg-zinc-900/80 border border-zinc-700 p-8 rounded-3xl hover:border-red-500 transition-all duration-300 hover:shadow-[0_0_20px_rgba(239,68,68,0.2)] group">
-              <span className="text-red-500 font-black text-3xl mb-4 block group-hover:scale-110 transition-transform origin-left">{item.id}.</span>
+            <div key={item.id} className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-3xl hover:border-red-500 transition-all duration-300 hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] group">
+              <span className="text-red-500 font-black text-4xl mb-6 block group-hover:scale-110 transition-transform origin-left">{item.id}</span>
               <h3 className="text-xl font-bold mb-3 text-white group-hover:text-red-400 transition-colors">{item.title}</h3>
               <p className="text-zinc-400 text-sm mb-6 leading-relaxed">{item.desc}</p>
               <ul className="space-y-3 text-zinc-300 text-sm border-t border-zinc-800 pt-6">
@@ -56,11 +56,11 @@ export const CourseSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="bg-zinc-900/50 border border-zinc-800 p-10 rounded-3xl">
+        <div className="bg-zinc-900/30 border border-zinc-800 p-10 rounded-3xl backdrop-blur-sm">
             <h3 className="text-2xl font-bold mb-10 text-center text-white">프로젝트 과정</h3>
             <div className="grid md:grid-cols-3 gap-8">
                 {PROJECTS_DATA.map((p, i) => (
-                    <div key={i} className="bg-black p-8 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
+                    <div key={i} className="bg-zinc-950 p-8 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors">
                         <h4 className="text-lg font-bold mb-6 text-red-500">{p.title}</h4>
                         <ul className="space-y-3 text-zinc-300 text-sm">
                             {p.subjects.map((sub, j) => <li key={j} className="flex items-start gap-2"><Cpu size={16} className="text-zinc-600 mt-0.5 flex-shrink-0" /> {sub}</li>)}

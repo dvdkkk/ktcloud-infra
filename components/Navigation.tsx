@@ -17,7 +17,9 @@ export const Navigation: React.FC = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
+    
     const element = document.getElementById(targetId);
+
     if (element) {
       const headerOffset = 80;
       const isMobile = window.innerWidth < 768;
@@ -35,8 +37,8 @@ export const Navigation: React.FC = () => {
   };
 
   const navLinks = [
-    { name: '비전 & 혜택', href: '#vision' },
-    { name: '과정소개', href: '#courses' },
+    { name: '과정소개', href: '#course-title' },
+    { name: '커리큘럼', href: '#courses' },
     { name: '커리어지원', href: '#employment-support' },
     { name: '수강후기', href: '#reviews' },
     { name: '학습환경', href: '#learning-space' },

@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Cpu className="text-red-600 hidden md:block" size={32} />
-                <h2 className="text-2xl md:text-4xl font-black text-white tracking-tighter">
+                <h2 id="course-title" className="text-2xl md:text-4xl font-black text-white tracking-tighter">
                   KT Cloud 클라우드 엔지니어링 (인프라) 전문가과정
                 </h2>
               </div>

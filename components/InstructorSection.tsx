@@ -60,9 +60,7 @@ export const InstructorSection: React.FC = () => {
         <div className="max-w-5xl mx-auto bg-zinc-900/50 border border-zinc-800 rounded-3xl p-8 md:p-12 shadow-2xl">
           <div className="flex flex-col md:flex-row gap-8 mb-12">
             <div className="md:w-1/3 text-center">
-              <div className="w-32 h-32 bg-zinc-800 rounded-full mx-auto mb-4 flex items-center justify-center text-zinc-500">
-                <UserCheck size={48} />
-              </div>
+              <img src="https://postfiles.pstatic.net/MjAyNjAzMjNfMjAx/MDAxNzc0MjQ3OTQ0NjY2.J8uK8FsAY-49US296FKwW_MUU-JWG8wzMp9ITtoNokIg.4lQmWTAgP0m-SyX60wJ-Thd06ZH4WJqSxeY0tClV_aEg.JPEG/kbt_teacher.jpg?type=w966" alt="강사 사진" className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" referrerPolicy="no-referrer" />
               <h3 className="text-2xl font-black text-white">김범택</h3>
               <p className="text-red-500 font-bold">강사</p>
               <p className="text-zinc-400 text-sm mt-2">클라우드 구축 및 컨설팅 전문가</p>

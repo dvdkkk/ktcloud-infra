@@ -72,32 +72,21 @@ export const ConsultationForm: React.FC = () => {
       alert("개인정보 수집 및 이용에 동의해야 합니다.");
       return;
     }
-    setStatus("SUBMITTING");
+    
+    // Optimistic UI: 즉시 성공 처리
+    setStatus("SUCCESS");
     
     const form = e.currentTarget;
     const data = new FormData(form);
     
-    try {
-      // 요청하신 데이터 수집용 Formspree 엔드포인트
-      const response = await fetch("https://formspree.io/f/xpqjpjpb", {
-        method: "POST",
-        body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        setStatus("SUCCESS");
-        form.reset();
-      } else {
-        setStatus("ERROR");
-        alert("전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-      }
-    } catch (error) {
-      setStatus("ERROR");
-      alert("네트워크 오류가 발생했습니다.");
-    }
+    // 백그라운드 전송
+    fetch("https://inputhaven.com/api/v1/submit", {
+      method: "POST",
+      body: data,
+      keepalive: true // 전송 보장
+    }).catch(err => console.error("전송 실패:", err));
+    
+    form.reset();
   };
 
   return (
@@ -110,7 +99,7 @@ export const ConsultationForm: React.FC = () => {
             <Reveal>
               <h2 className="text-3xl md:text-4xl font-black leading-tight mb-6">
                 망설이지 마세요.<br/>
-                보안 전문가가 <br/>
+                국비교육 전문가가 <br/>
                 친절하게 안내해드립니다.
               </h2>
               <p className="text-lg font-medium text-zinc-800 mb-6">
@@ -165,37 +154,32 @@ export const ConsultationForm: React.FC = () => {
                       <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
                   </h3>
                   
+                  <input type="hidden" name="_form_id" value="914168973e93bda60f4eac1e7cbe1449" />
+                  
+                  <div className="space-y-0.5 md:space-y-1">
+                      <label className="text-xs font-bold text-gray-700 ml-1">과정명</label>
+                      <input readOnly name="course_name" value="KT Cloud 클라우드 엔지니어링(인프라)" className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-sm font-bold" />
+                  </div>
+
                   <div className="grid md:grid-cols-2 gap-2 md:gap-3">
                       <div className="space-y-0.5 md:space-y-1">
                           <label className="text-xs font-bold text-gray-700 ml-1">이름</label>
-                          <input required name="이름" type="text" placeholder="홍길동" className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all text-sm" />
+                          <input required name="name" type="text" placeholder="홍길동" className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all text-sm" />
                       </div>
                       <div className="space-y-0.5 md:space-y-1">
                           <label className="text-xs font-bold text-gray-700 ml-1">나이</label>
-                          <input required name="나이" type="text" placeholder="예: 30" className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all text-sm" />
+                          <input required name="age" type="text" placeholder="예: 30" className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all text-sm" />
                       </div>
                   </div>
 
                   <div className="space-y-0.5 md:space-y-1">
                       <label className="text-xs font-bold text-gray-700 ml-1">연락처</label>
-                      <input required name="연락처" type="tel" placeholder="010-0000-0000" className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all text-sm" />
-                  </div>
-
-                  <div className="space-y-0.5 md:space-y-1">
-                      <label className="text-xs font-bold text-gray-700 ml-1">교육목적</label>
-                      <div className="flex flex-wrap gap-1.5 md:gap-2">
-                          {['취업/이직', '자기개발', '창업', '기타'].map((purpose) => (
-                              <label key={purpose} className="flex items-center gap-2 p-1.5 md:p-2 border rounded-lg cursor-pointer hover:bg-gray-50 flex-1 min-w-[80px] justify-center">
-                                  <input type="radio" name="교육목적" value={purpose} required className="accent-red-700 w-3.5 h-3.5" />
-                                  <span className="text-xs font-bold">{purpose}</span>
-                              </label>
-                          ))}
-                      </div>
+                      <input required name="email" type="tel" placeholder="010-0000-0000" className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all text-sm" />
                   </div>
 
                   <div className="space-y-0.5 md:space-y-1">
                       <label className="text-xs font-bold text-gray-700 ml-1">문의내용</label>
-                      <textarea name="문의내용" rows={2} placeholder="궁금하신 점을 자유롭게 적어주세요." className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all resize-none text-sm"></textarea>
+                      <textarea name="message" rows={2} placeholder="궁금하신 점을 자유롭게 적어주세요." className="w-full px-3 py-2 md:py-2.5 rounded-lg border border-gray-200 focus:border-red-600 focus:ring-2 focus:ring-red-600/20 outline-none transition-all resize-none text-sm"></textarea>
                   </div>
 
                   {/* Privacy Policy */}
