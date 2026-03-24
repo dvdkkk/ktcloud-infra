@@ -200,7 +200,7 @@ export const ConsultationForm: React.FC = () => {
                               onClick={() => setIsPrivacyOpen(!isPrivacyOpen)}
                               className="text-[10px] font-bold text-gray-500 hover:text-black flex items-center gap-1 bg-gray-100 px-2 py-1 rounded"
                           >
-                              {isPrivacyOpen ? '접기' : '자세히보기'}
+                              {isPrivacyOpen ? '접기' : '자세히 보기'}
                               {isPrivacyOpen ? <ChevronUp size={10}/> : <ChevronDown size={10}/>}
                           </button>
                       </div>
@@ -215,7 +215,7 @@ export const ConsultationForm: React.FC = () => {
                                   <div className="font-medium py-0.5">온라인문의</div>
                                   
                                   <div className="font-bold text-gray-600 bg-gray-100 rounded px-1 py-0.5 text-center">수집항목</div>
-                                  <div className="font-medium py-0.5">이름, 나이, 연락처, 교육목적, 문의내용</div>
+                                  <div className="font-medium py-0.5">이름, 나이, 연락처, 문의내용</div>
                                   
                                   <div className="font-bold text-gray-600 bg-gray-100 rounded px-1 py-0.5 text-center">보유기간</div>
                                   <div className="font-medium py-0.5">60일</div>
