@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall } from 'lucide-react';
+import { CONSULTATION_URL, PHONE_NUMBER, handlePhoneClick } from '../constants';
 
 export const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,19 +15,22 @@ export const Navigation: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isConsultation = false) => {
+    if (isConsultation || href === '#consultation') {
+      e.preventDefault();
+      window.open(CONSULTATION_URL, '_blank', 'noopener,noreferrer');
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
     e.preventDefault();
     const targetId = href.replace('#', '');
-    
     const element = document.getElementById(targetId);
 
     if (element) {
       const headerOffset = 80;
-      const isMobile = window.innerWidth < 768;
-      const additionalOffset = (isMobile && targetId === 'consultation') ? 390 : 0;
-
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset + additionalOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -42,7 +46,7 @@ export const Navigation: React.FC = () => {
     { name: '커리큘럼', href: '#courses' },
     { name: '커리어지원', href: '#employment-support' },
     { name: '수강후기', href: '#reviews' },
-    { name: '상담신청', href: '#consultation' },
+    { name: '상담신청', href: CONSULTATION_URL, isExternal: true },
   ];
 
   return (
@@ -62,10 +66,10 @@ export const Navigation: React.FC = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              onClick={(e) => handleNavClick(e, link.href)}
+              {...(link.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : { onClick: (e) => handleNavClick(e, link.href) })}
               className={`text-lg font-medium transition-colors ${
                 link.name === '상담신청' 
-                  ? 'text-red-600 font-bold' 
+                  ? 'text-red-500 font-bold hover:text-red-400' 
                   : 'text-gray-300 hover:text-red-600'
               }`}
             >
@@ -73,15 +77,13 @@ export const Navigation: React.FC = () => {
             </a>
           ))}
           <a 
-            href="tel:18775280" 
-            onClick={(e) => {
-              const isPc = window.innerWidth >= 1024;
-              if (isPc) handleNavClick(e, '#consultation');
-            }}
-            className="flex items-center gap-2 bg-red-700 text-white px-5 py-2 rounded-full font-bold text-lg hover:bg-red-600 transition-transform hover:scale-105"
+            href={`tel:${PHONE_NUMBER.replace('-', '')}`} 
+            onClick={handlePhoneClick}
+            title="PC: 상담신청 페이지 열기 / 모바일: 전화 연결"
+            className="flex items-center gap-2 bg-red-700 text-white px-5 py-2 rounded-full font-bold text-lg hover:bg-red-600 transition-transform hover:scale-105 cursor-pointer shadow-lg hover:shadow-red-700/40"
           >
             <PhoneCall size={20} />
-            1877-5280
+            {PHONE_NUMBER}
           </a>
         </div>
 
@@ -98,20 +100,22 @@ export const Navigation: React.FC = () => {
             <a 
               key={link.name} 
               href={link.href} 
+              {...(link.isExternal ? { target: "_blank", rel: "noopener noreferrer", onClick: () => setIsMobileMenuOpen(false) } : { onClick: (e) => handleNavClick(e, link.href) })}
               className={`text-base font-medium py-2 border-b border-zinc-800 ${
                 link.name === '상담신청' 
-                  ? 'text-red-600 font-bold' 
+                  ? 'text-red-500 font-bold' 
                   : 'text-gray-300 hover:text-red-600'
               }`}
-              onClick={(e) => handleNavClick(e, link.href)}
             >
               {link.name}
             </a>
           ))}
           <a 
-            href="#consultation" 
-            className="bg-red-700 text-white text-center py-3 rounded-md font-bold text-sm"
-            onClick={(e) => handleNavClick(e, '#consultation')}
+            href={CONSULTATION_URL} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-red-700 text-white text-center py-3 rounded-md font-bold text-sm block shadow-lg hover:bg-red-600 transition-colors"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
             무료상담 신청하기
           </a>
@@ -120,3 +124,4 @@ export const Navigation: React.FC = () => {
     </nav>
   );
 };
+

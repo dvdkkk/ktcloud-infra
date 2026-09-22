@@ -1,9 +1,11 @@
 
 import React, { useEffect } from 'react';
-import { Star, Calendar, Clock, MapPin, Home, UserCheck, Flame, Cpu } from 'lucide-react';
+import { Star, Calendar, Clock, MapPin, Home, UserCheck, Flame, Cpu, ExternalLink } from 'lucide-react';
 import { useContent } from '../contexts/ContentContext';
+import { handlePhoneClick, PHONE_NUMBER } from '../constants';
 
 export const Hero: React.FC = () => {
+
   const { content } = useContent();
   const { hero } = content;
 
@@ -73,17 +75,39 @@ export const Hero: React.FC = () => {
 
         {/* Recruitment Info Summary (6 Items) */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 w-full border-t border-white/10 pt-10 bg-black/10 backdrop-blur-sm rounded-2xl">
-          {hero.stats.map((stat, idx) => (
-            <div key={idx} className="flex flex-col items-center justify-center p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-600/30 transition-colors group">
-              <div className="flex items-center gap-2 mb-2">
-                {statIcons[idx]}
-                <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">{stat.label}</p>
+          {hero.stats.map((stat, idx) => {
+            const isPhone = stat.label === '문의' || stat.value.includes(PHONE_NUMBER);
+            if (isPhone) {
+              return (
+                <a
+                  key={idx}
+                  href={`tel:${PHONE_NUMBER.replace('-', '')}`}
+                  onClick={handlePhoneClick}
+                  title="PC: 상담신청 페이지 열기 / 모바일: 전화 연결"
+                  className="flex flex-col items-center justify-center p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-600/60 hover:bg-zinc-900/80 transition-all group cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    {statIcons[idx]}
+                    <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest group-hover:text-red-400 transition-colors">{stat.label}</p>
+                  </div>
+                  <p className="text-sm md:text-lg font-black break-keep text-white group-hover:text-red-400 transition-colors flex items-center gap-1">
+                    {stat.value}
+                  </p>
+                </a>
+              );
+            }
+            return (
+              <div key={idx} className="flex flex-col items-center justify-center p-4 rounded-xl bg-zinc-900/40 border border-white/5 hover:border-red-600/30 transition-colors group">
+                <div className="flex items-center gap-2 mb-2">
+                  {statIcons[idx]}
+                  <p className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">{stat.label}</p>
+                </div>
+                <p className={`text-sm md:text-lg font-black break-keep ${stat.value.includes('모집 중') ? 'text-red-600' : stat.label === '교육기간' ? 'text-yellow-400' : 'text-white'}`}>
+                  {stat.value}
+                </p>
               </div>
-              <p className={`text-sm md:text-lg font-black break-keep ${stat.value.includes('모집 중') ? 'text-red-600' : stat.label === '교육기간' ? 'text-yellow-400' : 'text-white'}`}>
-                {stat.value}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

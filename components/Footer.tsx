@@ -1,11 +1,8 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
+import { handlePhoneClick, PHONE_NUMBER } from '../constants';
 
 export const Footer: React.FC = () => {
-  useEffect(() => {
-  
-  }, []);
-
   return (
     <footer className="bg-black text-zinc-500 py-6 border-t border-zinc-900 text-sm">
       <div className="container mx-auto px-4">
@@ -22,16 +19,17 @@ export const Footer: React.FC = () => {
             <div className="md:text-right">
                 <p className="font-bold text-zinc-400 mb-2">고객센터</p>
                 <a 
-                  href="tel:18775280" 
-                  className="text-2xl font-bold text-white hover:text-red-600 transition-colors md:pointer-events-none md:cursor-default md:hover:text-white inline-block mb-4"
+                  href={`tel:${PHONE_NUMBER.replace('-', '')}`} 
+                  onClick={handlePhoneClick}
+                  title="PC: 상담신청 페이지 열기 / 모바일: 전화 연결"
+                  className="text-2xl font-bold text-white hover:text-red-500 transition-colors inline-block mb-4 cursor-pointer"
                 >
-                  1877-5280
+                  {PHONE_NUMBER}
                 </a>
             </div>
         </div>
-
-        
       </div>
     </footer>
   );
 };
+
